@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Nested List</title>
+<style>
+    body{
+        font-family:Arial, Helvetica, sans-serif;
+        padding: 20px;
+    }
+    h2{
+        color: purple;
+    }
+    .main-list{
+        list-style-type: none;
+        padding-left: 0;
+    }
+    .main-list li{
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+    .sub-list{
+        list-style-type: none;
+        padding-left: 20px;
+        margin-top: 5px;
+    }
+    .sub-list li{
+        font-weight: normal;
+        position: relative;
+        padding-left: 20px;
+    }
+    .sub-list li:before{
+        color: purple;
+        content: "✦";
+        position: absolute;
+        left: 0;
+    }
+</style>
+</head>
+<body>
+    <h2>Task</h2>
+    <ul class="main-list">
+        <li>one
+            <ul class="sub-list">
+                <li>sub one</li>
+                <li>sub two</li>
+            </ul>
+        </li>
+        <li>two
+            <ul class="sub-list">
+                <li>sub one</li>
+                <li>sub two</li>
+            </ul>
+        </li>
+        <li>three
+            <ul class="sub-list">
+                <li>sub one</li>
+                <li>sub two</li>
+            </ul>
+        </li>
+    </ul>
+</body>
+</html>

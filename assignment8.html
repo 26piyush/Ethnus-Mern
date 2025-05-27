@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Checkerboard</title>
+    <style>
+        .checkerboard {
+            display: grid;
+            grid-template-columns: repeat(8, 100px);
+            grid-template-rows: repeat(8, 100px);
+        }
+        .black {
+            background-color: black;
+            width: 100px;
+            height: 100px;
+        }
+        .pink {
+            background-color: pink;
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="checkerboard">
+        <!-- Generate checkerboard pattern -->
+        <!-- Alternate black/pink squares in rows -->
+        <!-- You can duplicate this pattern as needed -->
+        <script>
+            let board = document.querySelector('.checkerboard');
+            for (let row = 0; row < 8; row++) {
+                for (let col = 0; col < 8; col++) {
+                    let div = document.createElement('div');
+                    div.className = (row + col) % 2 === 0 ? 'pink' : 'black';
+                    board.appendChild(div);
+                }
+            }
+        </script>
+    </div>
+</body>
+</html>

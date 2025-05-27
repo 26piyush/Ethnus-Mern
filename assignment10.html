@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Shopping list</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            padding:20px;
+        }
+        h2{
+            color:purple
+        }
+        .shopping-list{
+            list-style-type: none;
+            padding-left:0;
+        }
+        .shopping-list li{
+            padding: 5px 0;
+            position: relative;
+            padding-left: 25px;
+            font-size: 18px;
+        }
+        .shopping-list li:before{
+            content:"✦";
+            position: absolute;
+            left: 0;
+            color: purple;
+        }
+
+    </style>
+</head>
+<body>
+    <h2>Task</h2>
+    <ul class="shopping-list">
+        <li>Hummus</li>
+        <li>Pita</li>
+        <li>Ceaser salad</li>
+        <li>Halloumi</li>
+
+    </ul>
+    
+</body>
+</html>

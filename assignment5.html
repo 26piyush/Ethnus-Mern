@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Doctor Appointment Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+        }
+
+        .container {
+            display: flex;
+            align-items: flex-start;
+            gap: 40px;
+        }
+
+        .left-image {
+            flex: 1;
+        }
+
+        .left-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .form-container {
+            flex: 2;
+        }
+
+        h2 {
+            margin-top: 0;
+            border-bottom: 2px solid maroon;
+            padding-bottom: 10px;
+            color: maroon;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        input[type="text"],
+        input[type="tel"],
+        input[type="date"],
+        input[type="time"],
+        textarea {
+            width: 80%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        .checkbox-group {
+            margin-top: 10px;
+        }
+
+        input[type="submit"] {
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: maroon;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: darkred;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="left-image">
+            <img src="male-doctor-smiling-selfconfidence-flat-600nw-2281709217.webp" alt="Doctor Image">
+        </div>
+
+        <div class="form-container">
+            <h2>Doctor Appointment Form</h2>
+            <form>
+                <label>Appointment Date:
+                    <input type="date">
+                </label>
+
+                <label>Appointment Time:
+                    <input type="time">
+                </label>
+
+                <label>Name:
+                    <input type="text" placeholder="Your full name">
+                </label>
+
+                <label>Gender:
+                    <input type="radio" name="gender"> Male
+                    <input type="radio" name="gender"> Female
+                </label>
+
+                <label>Phone:
+                    <input type="tel" placeholder="10-digit number">
+                </label>
+
+                <label>Address:
+                    <input type="text" placeholder="Your address">
+                </label>
+
+                <label>Your Query:
+                    <textarea rows="4"></textarea>
+                </label>
+
+                <label>Appointment Type:</label>
+                <div class="checkbox-group">
+                    <input type="checkbox"> Cervix checkup<br>
+                    <input type="checkbox"> Heart checkup<br>
+                    <input type="checkbox"> Eye check-up<br>
+                    <input type="checkbox"> Hearing Test
+                </div>
+
+                <input type="submit" value="Send">
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>
