@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Music World</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: url('https://t4.ftcdn.net/jpg/03/73/50/11/360_F_373501182_AW73b2wvfm9wBuar0JYwKBeF8NAUHDOH.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    header {
+      font-family: 'Bubblegum Sans', cursive;
+      font-size: 36px;
+      color: #f6d6ff;
+      text-align: center;
+      padding: 15px 0;
+      margin: 20px auto;
+      width: 300px;
+      border: 3px dashed #d088f7;
+      border-radius: 12px;
+      background-color: rgba(103, 40, 153, 0.6);
+      box-shadow: 0 0 10px #d088f7;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      padding: 15px;
+      background-color: rgba(85, 26, 139, 0.85);
+      border-top: 2px dashed #c770f0;
+      border-bottom: 2px dashed #c770f0;
+    }
+
+    nav a {
+      text-decoration: none;
+      background-color: #8a4fff;
+      color: white;
+      padding: 10px 18px;
+      border-radius: 6px;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    nav a:hover {
+      background-color: #c770f0;
+    }
+
+    .section {
+      border: 2px dashed #c770f0;
+      margin: 20px;
+      padding: 15px;
+      background-color: rgba(51, 0, 102, 0.6);
+      border-radius: 8px;
+    }
+
+    .section h2 {
+      margin-bottom: 10px;
+      font-size: 20px;
+      text-align: left;
+      color: #f2c7ff;
+    }
+
+    .image-row {
+      display: flex;
+      overflow-x: auto;
+      gap: 15px;
+      padding-bottom: 10px;
+    }
+
+    .image-row a {
+      flex: 0 0 auto;
+    }
+
+    .image-row img {
+      width: 120px;
+      height: 180px;
+      object-fit: cover;
+      border: 2px solid #f2c7ff;
+      border-radius: 6px;
+      transition: transform 0.2s;
+    }
+
+    .image-row img:hover {
+      transform: scale(1.05);
+    }
+
+    .image-row::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .image-row::-webkit-scrollbar-thumb {
+      background: #d088f7;
+      border-radius: 4px;
+    }
+
+    .image-row::-webkit-scrollbar-track {
+      background: transparent;
+    }
+  </style>
+</head>
+<body>
+
+  <header>Music World</header>
+
+  <nav>
+    <a href="#">HOME</a>
+    <a href="#">ABOUT US</a>
+    <a href="#">CATEGORY ↓</a>
+    <a href="#">PRODUCTION</a>
+    <a href="#">GALLERY</a>
+    <a href="#">CONTACT US</a>
+    <a href="#">LOGIN</a>
+  </nav>
+
+  <!-- Latest Album Section -->
+  <div class="section">
+    <h2>→ Latest Album ...</h2>
+    <div class="image-row">
+      <!-- Reuse same image for example, replace with your own -->
+      <a href="https://pitchfork.com/reviews/albums/caroline-caroline-2/"><img src="https://media.pitchfork.com/photos/67fd6e2ef6cbe7397ce0fdb5/1:1/w_240,c_limit/caroline-2.jpeg" alt="Album" /></a>
+      <a href="https://pitchfork.com/reviews/albums/smerz-big-city-life/"><img src="https://media.pitchfork.com/photos/67d9ac6402274c7fddb6b33f/1:1/w_320,c_limit/Smerz-Big-city-life.jpeg" alt="Album" /></a>
+      <a href="https://pitchfork.com/reviews/albums/billy-woods-golliwog/"><img src="https://media.pitchfork.com/photos/67d03ddce5982d5e19472e53/1:1/w_320,c_limit/billy-woods-GOLLIWOG.jpeg" alt="Album" /></a>
+      <a href="https://pitchfork.com/reviews/albums/djrum-under-tangled-silence/"><img src="https://media.pitchfork.com/photos/680f92f7080b52e56b8fedc3/1:1/w_320,c_limit/Djrum-Under-Tangled-Silence.jpeg" alt="Album" /></a>
+      <a href="https://pitchfork.com/reviews/albums/jefre-cantu-ledesma-gift-songs/"><img src="https://media.pitchfork.com/photos/67d838a18a01b0720e4bd917/1:1/w_320,c_limit/Jefre%20Cantu-Ledesma:%20Gift%20Songs.jpg" alt="Album" /></a>
+      <a href="https://pitchfork.com/reviews/albums/caroline-caroline-2/"><img src="https://media.pitchfork.com/photos/67fd6e2ef6cbe7397ce0fdb5/1:1/w_240,c_limit/caroline-2.jpeg" alt="Album" /></a>
+      <a href="https://pitchfork.com/reviews/albums/smerz-big-city-life/"><img src="https://media.pitchfork.com/photos/67d9ac6402274c7fddb6b33f/1:1/w_320,c_limit/Smerz-Big-city-life.jpeg" alt="Album" /></a>
+      <a href="https://pitchfork.com/reviews/albums/billy-woods-golliwog/"><img src="https://media.pitchfork.com/photos/67d03ddce5982d5e19472e53/1:1/w_320,c_limit/billy-woods-GOLLIWOG.jpeg" alt="Album" /></a>
+      <a href="https://pitchfork.com/reviews/albums/djrum-under-tangled-silence/"><img src="https://media.pitchfork.com/photos/680f92f7080b52e56b8fedc3/1:1/w_320,c_limit/Djrum-Under-Tangled-Silence.jpeg" alt="Album" /></a>
+      <a href="https://pitchfork.com/reviews/albums/jefre-cantu-ledesma-gift-songs/"><img src="https://media.pitchfork.com/photos/67d838a18a01b0720e4bd917/1:1/w_320,c_limit/Jefre%20Cantu-Ledesma:%20Gift%20Songs.jpg" alt="Album" /></a>
+      
+    </div>
+  </div>
+
+  <!-- Top 10 Songs Section -->
+  <div class="section">
+    <h2>→ TOP 10 Songs ...</h2>
+    <div class="image-row">
+      <a href="https://www.youtube.com/watch?v=XCIYHCXQoxQ&t=1s"><img src="https://lyricssamaa.com/wp-content/uploads/2025/01/red-lyrics-seedhe-maut-1024x576.webp" alt="Song" /></a>
+      <a href="https://www.youtube.com/watch?v=mq7tXcDgBBI"><img src="https://t2.genius.com/unsafe/176x176/https%3A%2F%2Fimages.genius.com%2F62ccdf43a143593cfa6e3e6187f73b47.1000x1000x1.jpg" alt="Song" /></a>
+      <a href="https://www.youtube.com/watch?v=k-ZqZmfNGAU"><img src="https://t2.genius.com/unsafe/176x176/https%3A%2F%2Fimages.genius.com%2F80b4fa398f81b11031bce7695b7c41a3.1000x1000x1.jpg" alt="Song" /></a>
+      <a href="https://www.youtube.com/watch?v=BtQp2U6hJII"><img src="https://c.saavncdn.com/177/White-Brown-Black-Punjabi-2022-20221207053210-500x500.jpg" alt="Song" /></a>
+      <a href="https://www.youtube.com/watch?v=3_jrHiKTMPU"><img src="https://c.saavncdn.com/237/Shadgi-Punjabi-2020-20201029104813-500x500.jpg" alt="Song" /></a>
+      <a href="https://www.youtube.com/watch?v=XCIYHCXQoxQ&t=1s"><img src="https://lyricssamaa.com/wp-content/uploads/2025/01/red-lyrics-seedhe-maut-1024x576.webp" alt="Song" /></a>
+      <a href="https://www.youtube.com/watch?v=mq7tXcDgBBI"><img src="https://t2.genius.com/unsafe/176x176/https%3A%2F%2Fimages.genius.com%2F62ccdf43a143593cfa6e3e6187f73b47.1000x1000x1.jpg" alt="Song" /></a>
+      <a href="https://www.youtube.com/watch?v=k-ZqZmfNGAU"><img src="https://t2.genius.com/unsafe/176x176/https%3A%2F%2Fimages.genius.com%2F80b4fa398f81b11031bce7695b7c41a3.1000x1000x1.jpg" alt="Song" /></a>
+      <a href="https://www.youtube.com/watch?v=BtQp2U6hJII"><img src="https://c.saavncdn.com/177/White-Brown-Black-Punjabi-2022-20221207053210-500x500.jpg" alt="Song" /></a>
+      <a href="https://www.youtube.com/watch?v=3_jrHiKTMPU"><img src="https://c.saavncdn.com/237/Shadgi-Punjabi-2020-20201029104813-500x500.jpg" alt="Song" /></a>
+    </div>
+  </div>
+
+  <!-- Top 10 Artists Section -->
+  <div class="section">
+    <h2>→ Top 10 Artist ...</h2>
+    <div class="image-row">
+      <a href="https://en.wikipedia.org/wiki/Seedhe_Maut"><img src="https://rollingstoneindia.com/wp-content/uploads/2023/12/seedhe-maut-photoshoot-2023-shot-by-kyabc-43-960x640.jpg" alt="seedhe maut" /></a>
+      
+      <a href="https://en.wikipedia.org/wiki/Raftaar"><img src="https://rollingstoneindia.com/wp-content/uploads/2022/04/Raftaar-6-scaled-e1650289863809-960x723.jpg" alt="ENCORE ABJ" /></a>
+      <a href="https://en.wikipedia.org/wiki/Ikka_Singh"><img src="https://rollingstoneindia.com/wp-content/uploads/2023/05/2-960x1200.png" alt="Artist" /></a>
+      <a href="https://en.wikipedia.org/wiki/Karan_Aujla"><img src="https://th-i.thgim.com/public/life-and-style/2wxi21/article68858663.ece/alternates/FREE_1200/Karan%20Aujla.jpg" /></a>
+      <a href="https://en.wikipedia.org/wiki/Parmish_Verma"><img src="https://rollingstoneindia.com/wp-content/uploads/2025/03/PV-Wesbite-Banner-960x720.jpg" alt="Artist" /></a>
+      <a href="https://en.wikipedia.org/wiki/Seedhe_Maut"><img src="https://rollingstoneindia.com/wp-content/uploads/2023/12/seedhe-maut-photoshoot-2023-shot-by-kyabc-43-960x640.jpg" alt="seedhe maut" /></a>
+      
+      <a href="https://en.wikipedia.org/wiki/Raftaar"><img src="https://rollingstoneindia.com/wp-content/uploads/2022/04/Raftaar-6-scaled-e1650289863809-960x723.jpg" alt="ENCORE ABJ" /></a>
+      <a href="https://en.wikipedia.org/wiki/Ikka_Singh"><img src="https://rollingstoneindia.com/wp-content/uploads/2023/05/2-960x1200.png" alt="Artist" /></a>
+      <a href="https://en.wikipedia.org/wiki/Karan_Aujla"><img src="https://th-i.thgim.com/public/life-and-style/2wxi21/article68858663.ece/alternates/FREE_1200/Karan%20Aujla.jpg" /></a>
+      <a href="https://en.wikipedia.org/wiki/Parmish_Verma"><img src="https://rollingstoneindia.com/wp-content/uploads/2025/03/PV-Wesbite-Banner-960x720.jpg" alt="Artist" /></a>
+    </div>
+  </div>
+
+</body>
+</html>

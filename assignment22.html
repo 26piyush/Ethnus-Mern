@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Photo Gallery</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQRDgmUL7VhJJlxVVqnvL_IzqwLgc2ahMS_Q&s);
+      background-size: auto ;
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .gallery-header {
+      font-family: 'Bubblegum Sans', cursive;
+      text-align: center;
+      padding: 15px 0;
+      margin: 30px auto;
+      width: 300px;
+      font-size: 28px;
+      background-color: #b067db;
+      color: white;
+      border: 3px dashed #9f3fdd;
+      border-radius: 15px;
+      box-shadow: 0 0 10px #d5a9ff;
+    }
+
+    .gallery-container {
+      max-width: 800px;
+      margin: 0 auto 50px auto;
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.266);
+      border: 3px dashed white;
+      border-radius: 12px;
+      box-shadow: 0 0 10px #ffffff;
+    }
+
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 15px;
+      padding: 10px;
+    }
+
+    .image-grid img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      opacity: 0.85;
+      transition: transform 0.3s, opacity 0.3s;
+      border: 2px solid black;
+    }
+
+    .image-grid img:hover {
+      transform: scale(1.05);
+      opacity: 1;
+      border-color: #a64dff;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="gallery-header">Photo Gallery</div>
+
+  <div class="gallery-container">
+    <div class="image-grid">
+      <img src="https://rollingstoneindia.com/wp-content/uploads/2023/12/seedhe-maut-photoshoot-2023-shot-by-kyabc-43-960x640.jpg" alt="img1" />
+      <img src="https://rollingstoneindia.com/wp-content/uploads/2022/04/Raftaar-6-scaled-e1650289863809-960x723.jpg" alt="img2" />
+      <img src="https://rollingstoneindia.com/wp-content/uploads/2023/05/2-960x1200.png" alt="img3" />
+      <img src="https://th-i.thgim.com/public/life-and-style/2wxi21/article68858663.ece/alternates/FREE_1200/Karan%20Aujla.jpg" alt="img4" />
+      <img src="https://rollingstoneindia.com/wp-content/uploads/2025/03/PV-Wesbite-Banner-960x720.jpg" alt="img5" />
+      <img src="https://lyricssamaa.com/wp-content/uploads/2025/01/red-lyrics-seedhe-maut-1024x576.webp" alt="img6" />
+      <img src="https://t2.genius.com/unsafe/176x176/https%3A%2F%2Fimages.genius.com%2F62ccdf43a143593cfa6e3e6187f73b47.1000x1000x1.jpg" alt="img7" />
+      <img src="https://c.saavncdn.com/237/Shadgi-Punjabi-2020-20201029104813-500x500.jpg" alt="img8" />
+      <img src="https://c.saavncdn.com/177/White-Brown-Black-Punjabi-2022-20221207053210-500x500.jpg" alt="img9" />
+    </div>
+  </div>
+
+</body>
+</html>
