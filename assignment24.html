@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Repeat Text</title>
+</head>
+<body>
+  <h2>Repeat Text N Times</h2>
+  <label>enter number to be repeated.<input type="text" id="numinput" placeholder="enter a number"/></label> <br>
+  <label>enter number of times to be repeated.<input type="count" id="repeatinput" placeholder="enter a number"/></label>
+
+  <p id="output"></p>
+
+  <script>
+    function repeat(){
+      let text = document.getElementById("numinput").value;
+      let count = document.getElementById("repeatinput").value;
+      count = parseInt(count);
+
+      let result="";
+
+      if (!text) {
+        alert("Text cannot be empty.");
+      } else if (isNaN(count) || count < 1) {
+        alert("Please enter a valid positive number.");
+      } else {
+        result = text.repeat(count);
+      }
+
+      document.getElementById("output").innerHTML = result;
+    }
+  </script>
+    <button onclick="repeat()">repeat</button>
+
+</body>
+</html>

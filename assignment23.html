@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Check Number Sign</title>
+</head>
+<body>
+  <h2>Check if a Number is Positive, Negative, or Zero</h2>
+  <button onclick="checking()">check</button>
+
+  <script>
+    function checking(){
+      let num = prompt("Enter a number to check:");
+      num = parseFloat(num);
+
+      if (isNaN(num)) {
+        alert("Please enter a valid number.");
+      } else if (num > 0) {
+        alert(num + " is positive.");
+      } else if (num < 0) {
+        alert(num + " is negative.");
+      } else {
+        alert("The number is zero.");
+      }
+
+    }
+    
+  </script>
+</body>
+</html>

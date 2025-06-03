@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>simple break example</title>
+</head>
+<body>
+    <h2>Break statement in loop</h2>
+    <label>enter a number:<input type="number" id="number input"></label><br>
+    <button onclick="breaking()">sample break.</button>
+
+    <p id="output"></p>
+    <script>
+        
+
+        function breaking(){
+            const n = parseInt(document.getElementById("number input").value);
+            let result="";
+
+
+            for(let i=0;i<n+1;i++){
+                if(i==n){
+                    result+="breaking loop at i = " + i + "<br>";
+                    break;
+                }
+                result+="current count : "+i + "<br>";
+            }
+
+
+            result+="loop ended at:"+n;
+            document.getElementById("output").innerHTML = result;
+
+    }
+
+        </script>
+</body>
+</html>
