@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Function Types in JavaScript</title>
+  <style>
+    body {
+      background: #111;
+      color: #eee;
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    button {
+      margin: 5px;
+      padding: 10px 14px;
+      background: #0d47a1;
+      border: none;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    h2 {
+      margin-top: 30px;
+      color: #90caf9;
+    }
+    #output {
+      margin-top: 20px;
+      background: #222;
+      padding: 10px;
+      border-radius: 6px;
+      min-height: 30px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Function Types in JavaScript</h1>
+
+<h2>Normal Functions</h2>
+<button onclick="normalFunction()">Normal Function</button>
+
+<h2>Named Function Expression</h2>
+<button onclick="namedFunctionExpression()">Named Function Expression</button>
+
+<h2>Anonymous Functions</h2>
+<button onclick="anonymousFunctionExpr()">Anonymous Function Expression</button>
+<button onclick="arrowFunction()">Arrow Function</button>
+<button onclick="iife()">IIFE</button>
+<button onclick="callbackExample()">Callback Function</button>
+<button id="eventBtn">Event Listener</button>
+<button onclick="runTimeout()">setTimeout</button>
+<button onclick="runInterval()">setInterval (stops after 3)</button>
+<button onclick="arrayMap()">Array.map()</button>
+
+<div id="output"></div>
+
+<script>
+  const output = document.getElementById("output");
+
+  // Normal Function
+  function normalFunction() {
+    output.textContent = "This is a normal function call.";
+  }
+
+  // Named Function Expression
+  function namedFunctionExpression() {
+    const sayHi = function greet() {
+      output.textContent = "Hello from a named function expression (greet)!";
+    };
+    sayHi();
+  }
+
+  // Anonymous Function Expression
+  function anonymousFunctionExpr() {
+    const greet = function(name) {
+      output.textContent = "Hello from anonymous function expression, " + name;
+    };
+    greet("User");
+  }
+
+  // Arrow Function
+  function arrowFunction() {
+    const double = (n) => n * 2;
+    output.textContent = "Arrow Function: double(4) = " + double(4);
+  }
+
+  // Immediately Invoked Function Expression (IIFE)
+  function iife() {
+    (function () {
+      output.textContent = "Hello from IIFE!";
+    })();
+  }
+
+  // Anonymous Callback Function
+  function callbackExample() {
+    function doSomething(callback) {
+      callback("Callback worked!");
+    }
+    doSomething(function (msg) {
+      output.textContent = msg;
+    });
+  }
+
+  // Event Listener with Anonymous Function
+  document.getElementById("eventBtn").addEventListener("click", function () {
+    output.textContent = "Anonymous function from event listener!";
+  });
+
+  // setTimeout with Anonymous Function
+  function runTimeout() {
+    setTimeout(function () {
+      output.textContent = "Anonymous setTimeout fired!";
+    }, 1000);
+  }
+
+  // setInterval with Anonymous Function
+  function runInterval() {
+    let count = 0;
+    const interval = setInterval(function () {
+      count++;
+      output.textContent = "Interval count: " + count;
+      if (count === 3) clearInterval(interval);
+    }, 1000);
+  }
+
+  // Anonymous Function in Array.map()
+  function arrayMap() {
+    const nums = [1, 2, 3];
+    const doubled = nums.map(function (n) {
+      return n * 2;
+    });
+    output.textContent = "Array.map() result: " + doubled.join(", ");
+  }
+</script>
+
+</body>
+</html>

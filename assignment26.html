@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>JavaScript Array Methods Interactive</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background: #f0f0f5;
+    color: #333;
+  }
+  h2 {
+    border-bottom: 2px solid #4CAF50;
+    padding-bottom: 4px;
+  }
+  section {
+    background: white;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+  }
+  label {
+    font-weight: bold;
+  }
+  input, select, button, textarea {
+    margin: 5px 0 10px 0;
+    padding: 6px 8px;
+    font-size: 1rem;
+  }
+  textarea {
+    width: 100%;
+    height: 70px;
+    resize: vertical;
+  }
+  .output {
+    background: #eef9ee;
+    border: 1px solid #4caf50;
+    padding: 10px;
+    font-family: monospace;
+    white-space: pre-wrap;
+    border-radius: 4px;
+  }
+</style>
+</head>
+<body>
+
+<h1>JavaScript Array Methods Interactive Demo</h1>
+
+<section id="base-array">
+  <label for="baseArrayInput">Base Array:</label><br />
+  <input type="text" id="baseArrayInput" placeholder="e.g. 1,2,3,4" />
+  <button onclick="resetArray()">Reset Array</button>
+  <div><strong>Current Array:</strong> <span id="currentArray"></span></div>
+</section>
+
+<section>
+  <h2>All Methods</h2>
+  <button onclick="mapDemo()">Map (double values)</button>
+  <button onclick="reduceDemo()">Reduce (sum)</button>
+  <button onclick="reduceRightDemo()">ReduceRight (concat)</button>
+  <button onclick="someDemo()">Some (any > 5)</button>
+  <button onclick="everyDemo()">Every (all > 0)</button>
+  <button onclick="sortDemo()">Sort</button>
+  <button onclick="reverseDemo()">Reverse</button>
+  <button onclick="joinDemo()">Join with ,</button>
+  <button onclick="toStringDemo()">ToString</button>
+  <button onclick="toLocaleStringDemo()">ToLocaleString</button>
+  <button onclick="fillDemo()">Fill with X</button>
+  <button onclick="flatDemo()">Flat</button>
+  <button onclick="flatMapDemo()">FlatMap (*2)</button>
+</section>
+
+<section>
+  <h2>Output</h2>
+  <div class="output" id="outputArea">Results will appear here.</div>
+</section>
+
+<script>
+let baseArray = [];
+function parseArrayInput(input) {
+  if (!input.trim()) return [];
+  return input.split(',').map(s => isNaN(s) ? s.trim() : Number(s));
+}
+function updateCurrentArray() {
+  document.getElementById('currentArray').textContent = JSON.stringify(baseArray);
+}
+function resetArray() {
+  const input = document.getElementById('baseArrayInput').value;
+  baseArray = parseArrayInput(input);
+  updateCurrentArray();
+  showOutput('Array reset to: ' + JSON.stringify(baseArray));
+}
+function showOutput(text) {
+  document.getElementById('outputArea').textContent = text;
+}
+function mapDemo() {
+  const mapped = baseArray.map(x => typeof x === 'number' ? x * 2 : x);
+  showOutput('Mapped (x2): ' + JSON.stringify(mapped));
+}
+function reduceDemo() {
+  const sum = baseArray.reduce((a, b) => a + (typeof b === 'number' ? b : 0), 0);
+  showOutput('Reduced sum: ' + sum);
+}
+function reduceRightDemo() {
+  const result = baseArray.reduceRight((a, b) => a.toString() + b.toString());
+  showOutput('ReducedRight: ' + result);
+}
+function someDemo() {
+  const result = baseArray.some(x => typeof x === 'number' && x > 5);
+  showOutput('Some > 5: ' + result);
+}
+function everyDemo() {
+  const result = baseArray.every(x => typeof x === 'number' && x > 0);
+  showOutput('Every > 0: ' + result);
+}
+function sortDemo() {
+  const sorted = [...baseArray].sort((a, b) => a - b);
+  showOutput('Sorted: ' + JSON.stringify(sorted));
+}
+function reverseDemo() {
+  const reversed = [...baseArray].reverse();
+  showOutput('Reversed: ' + JSON.stringify(reversed));
+}
+function joinDemo() {
+  const joined = baseArray.join(',');
+  showOutput('Joined: ' + joined);
+}
+function toStringDemo() {
+  showOutput('ToString: ' + baseArray.toString());
+}
+function toLocaleStringDemo() {
+  showOutput('ToLocaleString: ' + baseArray.toLocaleString());
+}
+function fillDemo() {
+  const filled = [...baseArray].fill('X', 1, 3);
+  showOutput('Filled: ' + JSON.stringify(filled));
+}
+function flatDemo() {
+  const nested = [1, [2, [3, 4]], 5];
+  showOutput('Flat [1,[2,[3,4]],5] = ' + JSON.stringify(nested.flat(2)));
+}
+function flatMapDemo() {
+  const flatMapped = baseArray.flatMap(x => [x, x]);
+  showOutput('FlatMapped (dup each): ' + JSON.stringify(flatMapped));
+}
+</script>
+</body>
+</html>

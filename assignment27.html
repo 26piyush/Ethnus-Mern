@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript String Methods Demo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: #eee;
+      padding: 20px;
+    }
+    button {
+      margin: 4px;
+      padding: 8px 12px;
+      background: #6200ea;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    #output {
+      margin-top: 20px;
+      background: #222;
+      padding: 10px;
+      border-radius: 6px;
+      min-height: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>String Methods Examples</h1>
+  <p>Using string: <code>let str = " Hello JavaScript! ";</code></p>
+
+  <button onclick="showLength()">length</button>
+  <button onclick="showIncludes()">includes("Java")</button>
+  <button onclick="showIndexOf()">indexOf("J")</button>
+  <button onclick="showLastIndexOf()">lastIndexOf("!")</button>
+  <button onclick="showSlice()">slice(1, 6)</button>
+  <button onclick="showSubstring()">substring(1, 6)</button>
+  <button onclick="showSubstr()">substr(1, 6)</button>
+  <button onclick="showReplace()">replace("Java", "JS")</button>
+  <button onclick="showReplaceAll()">replaceAll(" ", "_")</button>
+  <button onclick="showPadStart()">padStart(25, '*')</button>
+  <button onclick="showPadEnd()">padEnd(25, '*')</button>
+  <button onclick="showToUpperCase()">toUpperCase()</button>
+  <button onclick="showToLowerCase()">toLowerCase()</button>
+  <button onclick="showTrim()">trim()</button>
+  <button onclick="showTrimStart()">trimStart()</button>
+  <button onclick="showTrimEnd()">trimEnd()</button>
+  <button onclick="showCharAt()">charAt(1)</button>
+  <button onclick="showCharCodeAt()">charCodeAt(1)</button>
+  <button onclick="showCodePointAt()">codePointAt(1)</button>
+  <button onclick="showSplit()">split(" ")</button>
+  <button onclick="showMatch()">match(/Java/)</button>
+  <button onclick="showMatchAll()">matchAll(/a/g)</button>
+  <button onclick="showSearch()">search("Java")</button>
+  <button onclick="showConcat()">concat("!!")</button>
+  <button onclick="showRepeat()">repeat(2)</button>
+  <button onclick="showStartsWith()">startsWith(" H")</button>
+  <button onclick="showEndsWith()">endsWith("!")</button>
+
+  <div id="output"></div>
+
+  <script>
+    const str = " Hello JavaScript! ";
+    const output = document.getElementById("output");
+
+    function showLength() { output.textContent = `Length: ${str.length}`; }
+    function showIncludes() { output.textContent = `Includes "Java": ${str.includes("Java")}`; }
+    function showIndexOf() { output.textContent = `Index of 'J': ${str.indexOf("J")}`; }
+    function showLastIndexOf() { output.textContent = `Last index of '!': ${str.lastIndexOf("!")}`; }
+    function showSlice() { output.textContent = `Slice (1, 6): "${str.slice(1, 6)}"`; }
+    function showSubstring() { output.textContent = `Substring (1, 6): "${str.substring(1, 6)}"`; }
+    function showSubstr() { output.textContent = `Substr (1, 6): "${str.substr(1, 6)}"`; }
+    function showReplace() { output.textContent = `Replace "Java" with "JS": "${str.replace("Java", "JS")}"`; }
+    function showReplaceAll() { output.textContent = `Replace all spaces: "${str.replaceAll(" ", "_")}"`; }
+    function showPadStart() { output.textContent = `PadStart: "${str.trim().padStart(25, '*')}"`; }
+    function showPadEnd() { output.textContent = `PadEnd: "${str.trim().padEnd(25, '*')}"`; }
+    function showToUpperCase() { output.textContent = `To UpperCase: "${str.toUpperCase()}"`; }
+    function showToLowerCase() { output.textContent = `To LowerCase: "${str.toLowerCase()}"`; }
+    function showTrim() { output.textContent = `Trimmed: "${str.trim()}"`; }
+    function showTrimStart() { output.textContent = `TrimStart: "${str.trimStart()}"`; }
+    function showTrimEnd() { output.textContent = `TrimEnd: "${str.trimEnd()}"`; }
+    function showCharAt() { output.textContent = `charAt(1): '${str.charAt(1)}'`; }
+    function showCharCodeAt() { output.textContent = `charCodeAt(1): ${str.charCodeAt(1)}`; }
+    function showCodePointAt() { output.textContent = `codePointAt(1): ${str.codePointAt(1)}`; }
+    function showSplit() { output.textContent = `Split by space: [${str.trim().split(" ").join(", ")}]`; }
+    function showMatch() { output.textContent = `Match(/Java/): ${str.match(/Java/)}`; }
+    function showMatchAll() {
+      const matches = [...str.matchAll(/a/g)];
+      output.textContent = `MatchAll(/a/g): [${matches.map(m => m[0]).join(', ')}]`;
+    }
+    function showSearch() { output.textContent = `Search("Java"): ${str.search("Java")}`; }
+    function showConcat() { output.textContent = `Concat("!!"): "${str.concat("!!")}"`; }
+    function showRepeat() { output.textContent = `Repeat(2): "${str.repeat(2)}"`; }
+    function showStartsWith() { output.textContent = `StartsWith(" H"): ${str.startsWith(" H")}`; }
+    function showEndsWith() { output.textContent = `EndsWith("!"): ${str.endsWith("!")}`; }
+  </script>
+</body>
+</html>
