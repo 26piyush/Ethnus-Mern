@@ -1,0 +1,44 @@
+<!-- === MOBILE NUMBER VALIDATOR === -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mobile Number Validation using JavaScript</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 40px;
+    }
+
+    input {
+      padding: 10px;
+      font-size: 16px;
+      margin: 10px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Mobile Number Validation using JavaScript</h2>
+  <input type="text" id="mobileNumber" placeholder="Enter 10 Digit Mobile Num" />
+  <br>
+  <button onclick="validateMobile()">Validate</button>
+
+  <script>
+    function validateMobile() {
+      const number = document.getElementById("mobileNumber").value;
+      const regex = /^[6-9]\d{9}$/;
+
+      if (regex.test(number)) {
+        alert("Valid Mobile Number ✅");
+      } else {
+        alert("Invalid Mobile Number ❌");
+      }
+    }
+  </script>
+</body>
+</html>

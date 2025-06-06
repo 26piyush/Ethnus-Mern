@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Instagram Login Clone</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background: linear-gradient(to right, #f9f9f9, #ddd);
+    }
+
+    .container {
+      display: flex;
+      background: white;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .left img, .right img {
+      width: 250px;
+      height: 500px;
+      border: 1px dashed #aaa;
+      margin: 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      object-fit: cover;
+    }
+
+    .login-box {
+      width: 300px;
+      padding: 30px;
+      border: 1px solid #ccc;
+    }
+
+    .login-box h2 {
+      font-family: 'Brush Script MT', cursive;
+      font-size: 32px;
+    }
+
+    .login-box input {
+      width: 93%;
+      margin: 10px 0;
+      padding: 10px;
+    }
+
+    .login-box button {
+      width: 100%;
+      padding: 10px;
+      background-color: #3897f0;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    .login-box .links {
+      margin-top: 10px;
+      font-size: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .login-box .links a {
+      text-decoration: none;
+      color: #00376b;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="left img">
+        <img src="https://images.pexels.com/photos/2486168/pexels-photo-2486168.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"</div>
+
+    </div>
+    <div class="login-box">
+
+    <h2>Instagram</h2>
+
+    <input type="text" placeholder="Username">
+    <input type="password" placeholder="Password">
+
+    <button>Log in</button>
+
+    <div class="links">
+        <label style="display: flex; align-items: center; white-space: nowrap;">
+            <input type="checkbox" id="remember" style="margin-right: 5px;" />
+            Remember me
+        </label>
+        <a href="#">Forgot Password?</a>
+    </div>
+
+    <p style="margin-top: 20px;">Don't have an account? <a href="#">Sign up here.</a></p>
+    </div>
+    <div class="right img">
+        
+        <img src="https://images.pexels.com/photos/2486168/pexels-photo-2486168.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"</div>
+  </div>
+</body>
+</html>

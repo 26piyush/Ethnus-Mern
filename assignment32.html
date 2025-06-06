@@ -1,0 +1,81 @@
+<!-- === PRIME NUMBER GENERATOR === -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Prime Number Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 40px;
+    }
+
+    table {
+      margin: auto;
+    }
+
+    input, textarea, button {
+      padding: 10px;
+      font-size: 16px;
+      margin: 10px;
+    }
+
+    textarea {
+      width: 300px;
+      height: 100px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Prime Number Generator</h2>
+  <table>
+    <tr>
+      <td>Start</td>
+      <td><input type="number" id="startNum" /></td>
+    </tr>
+    <tr>
+      <td>End</td>
+      <td><input type="number" id="endNum" /></td>
+    </tr>
+    <tr>
+      <td>Prime Number</td>
+      <td><textarea id="output" readonly></textarea></td>
+    </tr>
+    <tr>
+      <td colspan="2" style="text-align: center;">
+        <button onclick="generatePrimes()">Generate</button>
+      </td>
+    </tr>
+  </table>
+
+  <script>
+    function isPrime(num) {
+      if (num <= 1) return false;
+      if (num <= 3) return true;
+      if (num % 2 === 0 || num % 3 === 0) return false;
+      for (let i = 5; i * i <= num; i += 6) {
+        if (num % i === 0 || num % (i + 2) === 0) return false;
+      }
+      return true;
+    }
+
+    function generatePrimes() {
+      const start = parseInt(document.getElementById("startNum").value);
+      const end = parseInt(document.getElementById("endNum").value);
+      const output = document.getElementById("output");
+
+      if (isNaN(start) || isNaN(end) || start > end) {
+        output.value = "Please enter a valid range!";
+        return;
+      }
+
+      let primes = [];
+      for (let i = start; i <= end; i++) {
+        if (isPrime(i)) primes.push(i);
+      }
+
+      output.value = primes.join(", ");
+    }
+  </script>
+</body>
+</html>
