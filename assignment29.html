@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Registration Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: rgb(92, 93, 95);
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    form {
+      width: 400px;
+      margin: auto;
+      padding: 20px;
+      background: rgb(232, 240, 240);
+      border: 1px solid #000000;
+      border-radius: 8px;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+    }
+
+    .error {
+      color: rgb(255, 0, 0);
+      font-size: 14px;
+    }
+
+    .error-input {
+      border-color: rgb(255, 0, 0);
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 10px 15px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Registration Form</h2>
+  <form id="registrationForm" onsubmit="return validateForm()">
+    <label>
+      Name:
+      <input type="text" id="name">
+      <div class="error" id="nameError"></div>
+    </label>
+
+    <label>
+      Email:
+      <input type="email" id="email">
+      <div class="error" id="emailError"></div>
+    </label>
+
+    <label>
+      Website:
+      <input type="url" id="website">
+      <div class="error" id="websiteError"></div>
+    </label>
+
+    <label>
+      Message:
+      <textarea id="message" rows="4"></textarea>
+      <div class="error" id="messageError"></div>
+    </label>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    function validateForm() {
+      let valid = true;
+
+      // Clear previous errors
+      document.querySelectorAll('.error').forEach(el => el.textContent = '');
+      document.querySelectorAll('input, textarea').forEach(el => el.classList.remove('error-input'));
+
+      // Name
+      const name = document.getElementById("name").value.trim();
+      if (!name) {
+        document.getElementById("nameError").textContent = "This field is required";
+        document.getElementById("name").classList.add("error-input");
+        valid = false;
+      }
+
+      // Email
+      const email = document.getElementById("email").value.trim();
+      const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+      if (!emailPattern.test(email)) {
+        document.getElementById("emailError").textContent = "A valid email address is required";
+        document.getElementById("email").classList.add("error-input");
+        valid = false;
+      }
+
+      // Website
+      const website = document.getElementById("website").value.trim();
+      try {
+        new URL(website);
+      } catch {
+        document.getElementById("websiteError").textContent = "A valid URL is required";
+        document.getElementById("website").classList.add("error-input");
+        valid = false;
+      }
+
+      // Message
+      const message = document.getElementById("message").value.trim();
+      if (!message) {
+        document.getElementById("messageError").textContent = "This field is required";
+        document.getElementById("message").classList.add("error-input");
+        valid = false;
+      }
+
+      return valid;
+    }
+  </script>
+</body>
+</html>
