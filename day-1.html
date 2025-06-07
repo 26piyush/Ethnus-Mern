@@ -4,59 +4,61 @@
     <title>Day-1</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 0;
+            font-family: 'Times New Roman', Times, serif;
+            margin: 10;
             padding: 20px;
-            background-color: #f5f5f5;
+            background-color: #1f1d1d;
         }
         h1 {
-            color: #333;
+            color: rgba(160, 7, 255, 0.756);
             text-align: center;
-            border-bottom: 2px solid rgb(155, 2, 250);
+            border-bottom: 2px solid rgba(160, 7, 255, 0.756);
             padding-bottom: 10px;
         }
         .container {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
             margin-top: 30px;
         }
-        .assignment-card {
-            background-color: white;
-            border-radius: 8px;
+        
+        .Assignment-card {
+            background-color: rgb(0, 0, 0);
+            border-radius: 25px;
             padding: 20px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
+            box-shadow: 10px 10px 10px rgba(128, 0, 255, 0.1);
+            transition: transform 0.7s ease;
         }
-        .assignment-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        .Assignment-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 5px 15px rgba(255, 0, 0, 0.2);
         }
-        .assignment-card h2 {
-            color: rgb(144, 0, 255);
+        .Assignment-card h2 {
+            color: rgba(160, 7, 255, 0.756);
             margin-top: 0;
         }
-        .assignment-card p {
-            color: #666;
+        .Assignment-card p {
+            color: #ffffff;
         }
-        .assignment-card a {
+        .Assignment-card a {
             display: inline-block;
             margin-top: 10px;
             padding: 8px 15px;
-            background-color: lavender;
+            background-color: rgba(104, 18, 157, 0.756);
             color: rgb(0, 0, 0);
             text-decoration: none;
             border-radius: 4px;
         }
-        .assignment-card a:hover {
-            background-color: purple;
+        .Assignment-card a:hover {
+            background-color: rgba(166, 0, 255, 0.756);
         }
+        
         footer {
             margin-top: 40px;
             text-align: center;
-            color: #666;
+            color: rgba(166, 0, 255, 0.756);
             padding: 20px;
-            border-top: 1px solid #ddd;
+            border-top: 1px solid rgba(166, 0, 255, 0.756);
         }
     </style>
 </head>
@@ -65,25 +67,25 @@
     <h1>MERN Assignments Collection</h1>
     
     <div class="container">
-        <div class="assignment-card">
+        <div class="Assignment-card">
             <h2>Assignment 1: Nested Lists</h2>
             <p>Demonstration of nested lists with different list item markers.</p>
             <a href="assignment-1.html">View Assignment</a>
         </div>
         
-        <div class="assignment-card">
+        <div class="Assignment-card">
             <h2>Assignment 2: Links</h2>
             <p>Various link examples including email links.</p>
             <a href="assignment2.html">View Assignment</a>
         </div>
         
-        <div class="assignment-card">
+        <div class="Assignment-card">
             <h2>Assignment 3: Tables</h2>
             <p>HTML tables with different cell spacing and padding examples.</p>
             <a href="assignment3.html">View Assignment</a>
         </div>
 
-        <div class="assignment-card">
+        <div class="Assignment-card">
             <h2>Go back</h2>
             <p>go back to homepage.</p>
             <a href="index.html">View homepage</a>
@@ -93,6 +95,7 @@
     </div>
     
     <footer>
+    
         <p>HTML Assignments Collection </p>
     </footer>
 </body>
