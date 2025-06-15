@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Timer</title>
+  <style>
+    body {
+      background-color: #eef5fc;
+      text-align: center;
+      font-family: 'Segoe UI', sans-serif;
+      padding: 40px;
+    }
+    #timer {
+      font-size: 48px;
+      margin: 20px;
+    }
+    button {
+      font-size: 18px;
+      margin: 10px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      cursor: pointer;
+    }
+    #start { background-color: #527a89; }
+    #stop { background-color: #e11d1d; }
+    #reset { background-color: #a0d89f; color: black; }
+  </style>
+</head>
+<body>
+  <h1>TIMER</h1>
+  <div id="timer">25:00</div>
+  <button id="start">START</button>
+  <button id="stop">STOP</button>
+  <button id="reset">RESET</button>
+
+  <script>
+    let time = 1500;
+    let timer;
+
+    function updateTimerDisplay() {
+      const minutes = Math.floor(time / 60);
+      const seconds = time % 60;
+      document.getElementById('timer').innerText = `${minutes.toString().padStart(2,'0')}:${seconds.toString().padStart(2,'0')}`;
+    }
+
+    document.getElementById('start').onclick = () => {
+      if (!timer) {
+        timer = setInterval(() => {
+          if (time > 0) {
+            time--;
+            updateTimerDisplay();
+          }
+        }, 1000);
+      }
+    };
+
+    document.getElementById('stop').onclick = () => {
+      clearInterval(timer);
+      timer = null;
+    };
+
+    document.getElementById('reset').onclick = () => {
+      clearInterval(timer);
+      timer = null;
+      time = 1500;
+      updateTimerDisplay();
+    };
+
+    updateTimerDisplay();
+  </script>
+</body>
+</html>
