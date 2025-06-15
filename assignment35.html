@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Local Storage Example</title>
+</head>
+<body>
+  <h2>Save and Load Name & Age</h2>
+
+  <label>Name: <input type="text" id="name" /></label><br><br>
+  <label>Age: <input type="number" id="age" /></label><br><br>
+
+  <button onclick="saveData()">Save</button>
+  <button onclick="loadData()">Load</button>
+
+  <script>
+    function saveData() {
+      const name = document.getElementById("name").value;
+      const age = document.getElementById("age").value;
+      localStorage.setItem("savedName", name);
+      localStorage.setItem("savedAge", age);
+      alert("Data saved to localStorage!");
+    }
+
+    function loadData() {
+      const name = localStorage.getItem("savedName");
+      const age = localStorage.getItem("savedAge");
+      document.getElementById("name").value = name || "";
+      document.getElementById("age").value = age || "";
+    }
+  </script>
+</body>
+</html>

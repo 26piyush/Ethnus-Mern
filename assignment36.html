@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Date Time Display</title>
+</head>
+<body>
+
+  <p id="datetime"></p>
+  <button onclick="startClock()">Click me</button>
+  <button onclick="stopClock()">stop</button>
+
+  <script>
+    let timer;
+
+    function updateTime() {
+      document.getElementById("datetime").innerHTML = new Date();
+    }
+
+    function startClock() {
+      updateTime(); // instantly show
+      timer = setInterval(updateTime, 1000);
+    }
+
+    function stopClock() {
+      clearInterval(timer);
+    }
+  </script>
+
+</body>
+</html>
