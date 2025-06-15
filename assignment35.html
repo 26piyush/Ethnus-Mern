@@ -1,32 +1,159 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Local Storage Example</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
 </head>
 <body>
-  <h2>Save and Load Name & Age</h2>
+    <h2>Contact Form</h2>
+    <form id="contactForm">
+        <div class="form-group">
+            <label for="firstName">First Name*</label>
+            <input type="text" id="firstName" name="firstName">
+            <div class="error" id="firstNameError">Please enter your first name</div>
+        </div>
+        
+        <div class="form-group">
+            <label for="lastName">Last Name*</label>
+            <input type="text" id="lastName" name="lastName">
+            <div class="error" id="lastNameError">Please enter your last name</div>
+        </div>
+        
+        <div class="form-group">
+            <label for="email">E-Mail*</label>
+            <input type="email" id="email" name="email">
+            <div class="error" id="emailError">Please enter a valid email address</div>
+        </div>
+        
+        <div class="form-group">
+            <label for="phone">Phone #*</label>
+            <input type="tel" id="phone" name="phone" placeholder="(845)555-1212">
+            <div class="error" id="phoneError">Please enter your phone number</div>
+        </div>
+        
+        <div class="form-group">
+            <label for="address">Address*</label>
+            <input type="text" id="address" name="address">
+            <div class="error" id="addressError">Please enter your street address</div>
+        </div>
+        
+        <div class="form-group">
+            <label for="city">City*</label>
+            <input type="text" id="city" name="city">
+            <div class="error" id="cityError">Please enter your city</div>
+        </div>
+        
+        <div class="form-group">
+            <label for="state">State*</label>
+            <select id="state" name="state">
+                <option value="">Please select your state</option>
+                <option value="CA">California</option>
+                <option value="NY">New York</option>
+                <option value="TX">Texas</option>
+                <!-- Add more states as needed -->
+            </select>
+            <div class="error" id="stateError">Please select your state</div>
+        </div>
+        
+        <div class="form-group">
+            <label>Do you have hosting?</label>
+            <div>
+                <input type="radio" id="hostingYes" name="hosting" value="yes">
+                <label for="hostingYes" style="display: inline;">Yes</label>
+                
+                <input type="radio" id="hostingNo" name="hosting" value="no">
+                <label for="hostingNo" style="display: inline;">No</label>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="projectDescription">Project Description</label>
+            <textarea id="projectDescription" name="projectDescription" rows="4"></textarea>
+        </div>
+        
+        <button type="submit">Submit</button>
+    </form>
 
-  <label>Name: <input type="text" id="name" /></label><br><br>
-  <label>Age: <input type="number" id="age" /></label><br><br>
-
-  <button onclick="saveData()">Save</button>
-  <button onclick="loadData()">Load</button>
-
-  <script>
-    function saveData() {
-      const name = document.getElementById("name").value;
-      const age = document.getElementById("age").value;
-      localStorage.setItem("savedName", name);
-      localStorage.setItem("savedAge", age);
-      alert("Data saved to localStorage!");
-    }
-
-    function loadData() {
-      const name = localStorage.getItem("savedName");
-      const age = localStorage.getItem("savedAge");
-      document.getElementById("name").value = name || "";
-      document.getElementById("age").value = age || "";
-    }
-  </script>
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            let isValid = true;
+            
+            // Reset errors
+            document.querySelectorAll('.error').forEach(el => el.style.display = 'none');
+            
+            // Validate required fields
+            const requiredFields = ['firstName', 'lastName', 'email', 'phone', 'address', 'city', 'state'];
+            requiredFields.forEach(field => {
+                const value = document.getElementById(field).value.trim();
+                if (!value) {
+                    document.getElementById(`${field}Error`).style.display = 'block';
+                    isValid = false;
+                }
+            });
+            
+            // Validate email format
+            const email = document.getElementById('email').value.trim();
+            if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                document.getElementById('emailError').style.display = 'block';
+                document.getElementById('emailError').textContent = 'Please enter a valid email address';
+                isValid = false;
+            }
+            
+            // Validate phone format (simple validation)
+            const phone = document.getElementById('phone').value.trim();
+            if (phone && !/^[\d\s\(\)\-]+$/.test(phone)) {
+                document.getElementById('phoneError').style.display = 'block';
+                document.getElementById('phoneError').textContent = 'Please enter a valid phone number';
+                isValid = false;
+            }
+            
+            if (isValid) {
+                alert('Form submitted successfully!');
+                // Here you would typically send the form data to a server
+            }
+        });
+    </script>
 </body>
 </html>

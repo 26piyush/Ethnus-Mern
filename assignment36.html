@@ -1,30 +1,161 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Date Time Display</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Exercises</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .tab-container {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            background-color: #f1f1f1;
+            border: none;
+            border-radius: 5px 5px 0 0;
+            margin-right: 5px;
+        }
+        .tab.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .content {
+            display: none;
+        }
+        .content.active {
+            display: block;
+        }
+        .input-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #reverseResult, #sortResult {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e9f7ef;
+            border-radius: 4px;
+            font-size: 18px;
+            min-height: 50px;
+        }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <h1>JavaScript Exercises</h1>
+        
+        <div class="tab-container">
+            <button class="tab active" onclick="openTab('reverse')">Reverse Number</button>
+            <button class="tab" onclick="openTab('sort')">Alphabetical Sort</button>
+        </div>
+        
+        <div id="reverse" class="content active">
+            <h2>Reverse a Number</h2>
+            <div class="input-group">
+                <label for="numberInput">Enter a number:</label>
+                <input type="number" id="numberInput" placeholder="e.g., 32243">
+            </div>
+            <button onclick="reverseNumber()">Reverse Number</button>
+            <div id="reverseResult"></div>
+        </div>
+        
+        <div id="sort" class="content">
+            <h2>Alphabetical Order</h2>
+            <div class="input-group">
+                <label for="stringInput">Enter a string:</label>
+                <input type="text" id="stringInput" placeholder="e.g., webmaster">
+            </div>
+            <button onclick="alphabetOrder()">Sort Alphabetically</button>
+            <div id="sortResult"></div>
+        </div>
+    </div>
 
-  <p id="datetime"></p>
-  <button onclick="startClock()">Click me</button>
-  <button onclick="stopClock()">stop</button>
+    <script>
+        function openTab(tabName) {
+            // Hide all tab content
+            const contents = document.getElementsByClassName('content');
+            for (let i = 0; i < contents.length; i++) {
+                contents[i].classList.remove('active');
+            }
+            
+            // Remove active class from all tabs
+            const tabs = document.getElementsByClassName('tab');
+            for (let i = 0; i < tabs.length; i++) {
+                tabs[i].classList.remove('active');
+            }
+            
+            // Show the current tab and mark button as active
+            document.getElementById(tabName).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
 
-  <script>
-    let timer;
+        function reverseNumber() {
+            const input = document.getElementById('numberInput').value;
+            const num = parseFloat(input);
+            
+            if (isNaN(num)) {
+                document.getElementById('reverseResult').textContent = 'Please enter a valid number';
+                return;
+            }
+            
+            const reversed = parseInt(num.toString().split('').reverse().join(''));
+            document.getElementById('reverseResult').textContent = `Original: ${num} | Reversed: ${reversed}`;
+        }
 
-    function updateTime() {
-      document.getElementById("datetime").innerHTML = new Date();
-    }
-
-    function startClock() {
-      updateTime(); // instantly show
-      timer = setInterval(updateTime, 1000);
-    }
-
-    function stopClock() {
-      clearInterval(timer);
-    }
-  </script>
-
+        function alphabetOrder() {
+            const input = document.getElementById('stringInput').value.trim();
+            
+            if (!input) {
+                document.getElementById('sortResult').textContent = 'Please enter a string';
+                return;
+            }
+            
+            const sorted = input.split('').sort().join('');
+            document.getElementById('sortResult').textContent = `Original: "${input}" | Sorted: "${sorted}"`;
+        }
+    </script>
 </body>
 </html>

@@ -1,57 +1,80 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Weather App</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #a8d5ba;
-      color: white;
-      text-align: center;
-      padding: 50px;
-    }
-    input {
-      padding: 8px;
-      border: none;
-      border-bottom: 2px solid white;
-      background: transparent;
-      color: white;
-      margin-right: 10px;
-    }
-    button {
-      padding: 10px 15px;
-      background-color: white;
-      color: black;
-      border-radius: 20px;
-      border: none;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .calculator {
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        input, button {
+            padding: 8px;
+            margin: 5px 0;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #result {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
-  <h1>Weather App</h1>
-  <div>
-    <h2 id="temp">--</h2>
-    <h3 id="location">City</h3>
-    <p id="datetime">--:-- --</p>
-    <p id="desc">--</p>
-  </div>
-  <input type="text" id="cityInput" placeholder="Enter city">
-  <button onclick="getWeather()">Search Button</button>
+    <div class="calculator">
+        <h2>Multiplication and Division Calculator</h2>
+        <label for="num1">1st Number:</label>
+        <input type="number" id="num1" placeholder="Enter first number"><br>
+        
+        <label for="num2">2nd Number:</label>
+        <input type="number" id="num2" placeholder="Enter second number"><br>
+        
+        <button onclick="calculate('multiply')">Multiply</button>
+        <button onclick="calculate('divide')">Divide</button>
+        
+        <div id="result">The Result Is: </div>
+    </div>
 
-  <script>
-    async function getWeather() {
-      const city = document.getElementById('cityInput').value;
-      const apiKey = 'YOUR_API_KEY';
-      const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-      const res = await fetch(url);
-      const data = await res.json();
-      document.getElementById('temp').innerText = Math.round(data.main.temp);
-      document.getElementById('location').innerText = data.name;
-      const now = new Date();
-      const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-      document.getElementById('datetime').innerText = `${now.getHours()}:${now.getMinutes()} ${days[now.getDay()]}`;
-      document.getElementById('desc').innerText = data.weather[0].description;
-    }
-  </script>
+    <script>
+        function calculate(operation) {
+            const num1 = parseFloat(document.getElementById('num1').value);
+            const num2 = parseFloat(document.getElementById('num2').value);
+            let result;
+            
+            if (isNaN(num1) || isNaN(num2)) {
+                document.getElementById('result').textContent = 'Please enter valid numbers';
+                return;
+            }
+            
+            if (operation === 'multiply') {
+                result = num1 * num2;
+            } else if (operation === 'divide') {
+                if (num2 === 0) {
+                    document.getElementById('result').textContent = 'Cannot divide by zero';
+                    return;
+                }
+                result = num1 / num2;
+            }
+            
+            document.getElementById('result').textContent = `The Result Is: ${result}`;
+        }
+    </script>
 </body>
 </html>

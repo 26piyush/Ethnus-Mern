@@ -1,79 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>To-Do List</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f2f2f2;
-      padding: 20px;
-    }
-    h1 {
-      text-align: center;
-    }
-    #taskInput {
-      padding: 10px;
-      width: 60%;
-      font-size: 16px;
-    }
-    #addBtn {
-      padding: 10px 20px;
-      font-size: 16px;
-    }
-    ul {
-      list-style-type: none;
-      padding: 0;
-    }
-    li {
-      background: #fff;
-      margin: 10px 0;
-      padding: 15px;
-      display: grid;
-      justify-content: space-between;
-      align-items: center;
-      border-radius: 4px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-    .deleteBtn {
-      background-color: red;
-      color: white;
-      border: none;
-      padding: 8px 12px;
-      cursor: pointer;
-      border-radius: 4px;
-    }
-  </style>
+  <title>Local Storage Example</title>
 </head>
 <body>
-  <h1>To-Do List</h1>
-  <input type="text" id="taskInput" placeholder="Enter a new task">
-  <button id="addBtn">Add</button>
-  <ul id="taskList"></ul>
+  <h2>Save and Load Name & Age</h2>
+
+  <label>Name: <input type="text" id="name" /></label><br><br>
+  <label>Age: <input type="number" id="age" /></label><br><br>
+
+  <button onclick="saveData()">Save</button>
+  <button onclick="loadData()">Load</button>
 
   <script>
-    const taskInput = document.getElementById("taskInput");
-    const addBtn = document.getElementById("addBtn");
-    const taskList = document.getElementById("taskList");
+    function saveData() {
+      const name = document.getElementById("name").value;
+      const age = document.getElementById("age").value;
+      localStorage.setItem("savedName", name);
+      localStorage.setItem("savedAge", age);
+      alert("Data saved to localStorage!");
+    }
 
-    addBtn.addEventListener("click", () => {
-      const taskText = taskInput.value.trim();
-      if (taskText !== "") {
-        const li = document.createElement("li");
-        li.innerHTML = `
-          ${taskText}
-          <button class="deleteBtn">Delete</button>
-        `;
-
-        li.querySelector(".deleteBtn").addEventListener("click", () => {
-          taskList.removeChild(li);
-        });
-
-        taskList.appendChild(li);
-        taskInput.value = "";
-      }
-    });
+    function loadData() {
+      const name = localStorage.getItem("savedName");
+      const age = localStorage.getItem("savedAge");
+      document.getElementById("name").value = name || "";
+      document.getElementById("age").value = age || "";
+    }
   </script>
 </body>
 </html>

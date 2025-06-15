@@ -1,204 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>FlickFinder</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body, html {
-      height: 100%;
-      font-family: 'Segoe UI', sans-serif;
-      overflow-x: hidden;
-      background: #000;
-      color: white;
-    }
-
-    header {
-      position: absolute;
-      width: 100%;
-      top: 0;
-      padding: 20px 50px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 2;
-    }
-
-    .logo {
-      font-size: 26px;
-      font-weight: bold;
-      color: #00ffcc;
-    }
-
-    .logo span {
-      color: white;
-    }
-
-    nav a {
-      margin: 0 15px;
-      text-decoration: none;
-      color: white;
-      font-weight: 500;
-    }
-
-    .favorite-btn {
-      background-color: #00ffcc;
-      border: none;
-      padding: 8px 16px;
-      border-radius: 20px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    .hero {
-      position: relative;
-      height: 100vh;
-      width: 100%;
-      overflow: hidden;
-    }
-
-    .bg-slideshow {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      transition: background-image 1s ease-in-out;
-      z-index: 0;
-    }
-
-    .overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.5);
-      z-index: 1;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      top: 50%;
-      transform: translateY(-50%);
-      text-align: center;
-      color: white;
-    }
-
-    .hero-content h1 {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-    }
-
-    .hero-content p {
-      font-size: 1.2rem;
-      line-height: 1.5;
-      margin-bottom: 30px;
-    }
-
-    .discover-btn {
-      background-color: white;
-      color: black;
-      border: none;
-      padding: 12px 24px;
-      font-size: 1rem;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-
-    .nav-arrows {
-      position: absolute;
-      width: 100%;
-      top: 50%;
-      display: flex;
-      justify-content: space-between;
-      padding: 0 30px;
-      z-index: 2;
-    }
-
-    .left-arrow,
-    .right-arrow {
-      background: rgba(255, 255, 255, 0.2);
-      border: none;
-      color: white;
-      font-size: 2rem;
-      cursor: pointer;
-      padding: 5px 15px;
-      border-radius: 50%;
-    }
-
-    .left-arrow:hover,
-    .right-arrow:hover {
-      background: rgba(255, 255, 255, 0.4);
-    }
-  </style>
+  <title>Date Time Display</title>
 </head>
 <body>
 
-  <header>
-    <div class="logo">Flick<span>Finder</span></div>
-    <nav>
-      <a href="#">Home</a>
-      <a href="#">Tv Show</a>
-      <a href="#">Movie</a>
-      <a href="#">Upcoming</a>
-      <button class="favorite-btn">Favorite ♡</button>
-    </nav>
-  </header>
-
-  <section class="hero">
-    <div class="bg-slideshow" id="bgSlideshow"></div>
-    <div class="overlay"></div>
-
-    <div class="hero-content">
-      <h1>Bringing the Big Screen to Your Screen</h1>
-      <p>Discover, critique, and celebrate movies<br> with honest reviews and fresh takes on every film</p>
-      <button class="discover-btn">Discover More..</button>
-    </div>
-
-    <div class="nav-arrows">
-      <button class="left-arrow" onclick="goLeft()">←</button>
-      <button class="right-arrow" onclick="goRight()">→</button>
-    </div>
-  </section>
+  <p id="datetime"></p>
+  <button onclick="startClock()">Click me</button>
+  <button onclick="stopClock()">stop</button>
 
   <script>
-    const images = [
-      "https://images.unsplash.com/photo-1502136969935-8d8eef54d77c?auto=format&fit=crop&w=1470&q=80",
-      "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1470&q=80",
-      "https://images.unsplash.com/photo-1517602302552-471fe67acf66?auto=format&fit=crop&w=1470&q=80"
-    ];
+    let timer;
 
-    let currentIndex = 0;
-    const slideshow = document.getElementById("bgSlideshow");
-
-    function updateBackground() {
-      slideshow.style.backgroundImage = `url('${images[currentIndex]}')`;
+    function updateTime() {
+      document.getElementById("datetime").innerHTML = new Date();
     }
 
-    function goLeft() {
-      currentIndex = (currentIndex - 1 + images.length) % images.length;
-      updateBackground();
+    function startClock() {
+      updateTime(); // instantly show
+      timer = setInterval(updateTime, 1000);
     }
 
-    function goRight() {
-      currentIndex = (currentIndex + 1) % images.length;
-      updateBackground();
+    function stopClock() {
+      clearInterval(timer);
     }
-
-    // Set initial background
-    updateBackground();
   </script>
+
 </body>
 </html>
