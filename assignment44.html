@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FlickFinder</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      font-family: 'Segoe UI', sans-serif;
+      overflow-x: hidden;
+      background: #000;
+      color: white;
+    }
+
+    header {
+      position: absolute;
+      width: 100%;
+      top: 0;
+      padding: 20px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 2;
+    }
+
+    .logo {
+      font-size: 26px;
+      font-weight: bold;
+      color: #00ffcc;
+    }
+
+    .logo span {
+      color: white;
+    }
+
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+    }
+
+    .favorite-btn {
+      background-color: #00ffcc;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .hero {
+      position: relative;
+      height: 100vh;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .bg-slideshow {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      transition: background-image 1s ease-in-out;
+      z-index: 0;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      top: 50%;
+      transform: translateY(-50%);
+      text-align: center;
+      color: white;
+    }
+
+    .hero-content h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .hero-content p {
+      font-size: 1.2rem;
+      line-height: 1.5;
+      margin-bottom: 30px;
+    }
+
+    .discover-btn {
+      background-color: white;
+      color: black;
+      border: none;
+      padding: 12px 24px;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .nav-arrows {
+      position: absolute;
+      width: 100%;
+      top: 50%;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 30px;
+      z-index: 2;
+    }
+
+    .left-arrow,
+    .right-arrow {
+      background: rgba(255, 255, 255, 0.2);
+      border: none;
+      color: white;
+      font-size: 2rem;
+      cursor: pointer;
+      padding: 5px 15px;
+      border-radius: 50%;
+    }
+
+    .left-arrow:hover,
+    .right-arrow:hover {
+      background: rgba(255, 255, 255, 0.4);
+    }
+
+    /* New FAQ Styles */
+    .faq-section {
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 0 20px;
+      color: #333;
+    }
+
+    .faq-section h2 {
+      color: #00ffcc;
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 2rem;
+    }
+
+    .faq-item {
+      margin-bottom: 15px;
+      border: 1px solid #444;
+      border-radius: 8px;
+      overflow: hidden;
+      background-color: #222;
+    }
+
+    .faq-question {
+      background-color: #333;
+      color: white;
+      padding: 15px 20px;
+      cursor: pointer;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background-color 0.3s;
+    }
+
+    .faq-question:hover {
+      background-color: #3a3a3a;
+    }
+
+    .faq-question::after {
+      content: '+';
+      font-size: 20px;
+    }
+
+    .faq-question.active::after {
+      content: '-';
+    }
+
+    .faq-answer {
+      background-color: #2a2a2a;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out;
+      padding: 0 20px;
+    }
+
+    .faq-answer p {
+      padding: 15px 0;
+      margin: 0;
+      color: #ccc;
+    }
+
+    /* New Footer Styles */
+    footer {
+      background-color: #111;
+      color: #ccc;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      text-align: left;
+    }
+
+    .footer-section {
+      flex: 1;
+      min-width: 250px;
+      margin-bottom: 20px;
+      padding: 0 15px;
+    }
+
+    .footer-section h3 {
+      color: #00ffcc;
+      margin-bottom: 15px;
+      font-size: 1.2rem;
+    }
+
+    .footer-section ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 10px;
+    }
+
+    .footer-section ul li a {
+      color: #ccc;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-section ul li a:hover {
+      color: #00ffcc;
+    }
+
+    .footer-bottom {
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid #333;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">Flick<span>Finder</span></div>
+    <nav>
+      <a href="assignment44.html">Home</a>
+      <a href="#">Tv Show</a>
+      <a href="assignment43.html">Movie</a>
+      <a href="#">Upcoming</a>
+      <button class="favorite-btn">Favorite ♡</button>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="bg-slideshow" id="bgSlideshow"></div>
+    <div class="overlay"></div>
+
+    <div class="hero-content">
+      <h1>Bringing the Big Screen to Your Screen</h1>
+      <p>Discover, critique, and celebrate movies<br> with honest reviews and fresh takes on every film</p>
+      <button class="discover-btn">Discover More..</button>
+    </div>
+
+    <div class="nav-arrows">
+      <button class="left-arrow" onclick="goLeft()">←</button>
+      <button class="right-arrow" onclick="goRight()">→</button>
+    </div>
+  </section>
+
+  <!-- New FAQ Section -->
+  <section class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <div class="faq-question">What is this website about?</div>
+      <div class="faq-answer">
+        <p>This website provides in-depth reviews, ratings, and analysis of movies from different genres, videos posted, and countries. You'll find user-submitted reviews, critic opinions, and recommendations for all types of films.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">How are movies rated?</div>
+      <div class="faq-answer">
+        <p>Movies are rated on a scale from 1 to 10 based on various factors including storyline, acting, cinematography, and overall entertainment value. Ratings are aggregated from both professional critics and community members.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">Can I submit my own reviews?</div>
+      <div class="faq-answer">
+        <p>Yes! We encourage our community members to submit their own reviews. Simply create an account and you can start sharing your thoughts on any movie in our database.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">Is the content on this website free?</div>
+      <div class="faq-answer">
+        <p>All our content is completely free to access. We may offer premium features in the future, but the basic functionality including reading and writing reviews will always remain free.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">How do I search for a specific movie?</div>
+      <div class="faq-answer">
+        <p>You can use the search bar at the top of the page to search by movie title, actor, director, or genre. You can also browse our curated collections and categories.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- New Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>About Us</h3>
+        <p>FlickFinder is dedicated to helping movie enthusiasts discover, discuss, and enjoy films from around the world.</p>
+      </div>
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="assignment44.html">Home</a></li>
+          <li><a href="#">TV Shows</a></li>
+          <li><a href="assignment43.html">Movies</a></li>
+          <li><a href="#">Upcoming Releases</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Contact</h3>
+        <ul>
+          <li>Email: info@flickfinder.com</li>
+          <li>Phone: (123) 456-7890</li>
+          <li>Address: 123 Movie Lane, Film City</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2025 FlickFinder. All Rights Reserved.
+    </div>
+  </footer>
+
+  <script>
+    const images = [
+      "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1470&q=80",
+      "https://images.unsplash.com/photo-1517602302552-471fe67acf66?auto=format&fit=crop&w=1470&q=80"
+    ];
+
+    let currentIndex = 0;
+    const slideshow = document.getElementById("bgSlideshow");
+
+    function updateBackground() {
+      slideshow.style.backgroundImage = `url('${images[currentIndex]}')`;
+    }
+
+    function goLeft() {
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      updateBackground();
+    }
+
+    function goRight() {
+      currentIndex = (currentIndex + 1) % images.length;
+      updateBackground();
+    }
+
+    // Set initial background
+    updateBackground();
+
+    // Auto-advance slides every 5 seconds
+    setInterval(goRight, 5000);
+
+    // FAQ functionality
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    faqQuestions.forEach(question => {
+      question.addEventListener('click', () => {
+        question.classList.toggle('active');
+        const answer = question.nextElementSibling;
+        if (answer.style.maxHeight) {
+          answer.style.maxHeight = null;
+        } else {
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
